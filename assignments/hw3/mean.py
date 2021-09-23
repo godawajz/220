@@ -17,7 +17,7 @@ def main():
 
     iterations = eval(input("enter the values to be entered: "))
 
-    for i in range(iterations):
+    for _ in range(iterations):
         temp = eval(input("enter value: "))
 
         mean += temp ** 2
