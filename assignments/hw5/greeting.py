@@ -9,11 +9,28 @@ I certify that this assignment is my own work."""
 import time
 from graphics import GraphWin, Circle, Polygon, Point, Text, color_rgb
 
+shapes_list = []
+text_list = []
+
 
 def main():
-    # create window
     win = GraphWin("test", 500, 400)
+    create_text(win)
+    for i in range(25):  # create grid
+        win.create_line(0, i * 20, 500, i * 20, fill=color_rgb(255, 219, 239))
+        win.create_line(i * 20, 0, i * 20, 500, fill=color_rgb(255, 219, 239))
 
+    # Begin greeting sequence
+    create_shapes()
+    draw_shapes(shapes_list, win)  # places shapes on window
+    fade_in(text_list[0], win, 1)  # Fade in greeting message
+    time.sleep(1.0)
+    move_arrow(shapes_list[3], shapes_list[4], shapes_list[5])  # move arrow
+    fade_in(text_list[1], win, 3)  # display exit prompt
+    win.getMouse()
+
+
+def create_shapes():
     # create heart
     shape1 = Polygon(Point(159, 120), Point(341, 120), Point(250, 260))
     shape1.setFill("deeppink")
@@ -52,40 +69,37 @@ def main():
     arrow_tail.setFill(color_rgb(235, 28, 69))
     arrow_tail.setOutline(color_rgb(133, 12, 36))
 
-    # create text
+    shapes_list.append(shape1)
+    shapes_list.append(shape2)
+    shapes_list.append(shape3)
+    shapes_list.append(arrow_tail)
+    shapes_list.append(arrow)
+    shapes_list.append(arrow_tip)
+    shapes_list.append(shape4)
+    shapes_list.append(shape5)
+
+
+def create_text(window):
     display_msg = Text(Point(250, 300), "Happy Valentine's Day!")
     display_msg.setFace("courier")
     display_msg.setStyle("bold")
     display_msg.setSize(20)
     display_msg.setTextColor("whitesmoke")
-    display_msg.draw(win)  # this has to be here for the fade in to function
+    display_msg.draw(window)  # this has to be here for the fade in to function
 
     close_msg = Text(Point(250, 330), "(click to close.)")
     close_msg.setFace("courier")
     close_msg.setTextColor("whitesmoke")
-    close_msg.draw(win)
+    close_msg.draw(window) # this has to be here for the fade in to function
 
-    for i in range(25):
-        win.create_line(0, i * 20, 500, i * 20, fill=color_rgb(255, 219, 239))
-        win.create_line(i * 20, 0, i * 20, 500, fill=color_rgb(255, 219, 239))
-
-    # places shapes on window
-    shapes = [shape1, shape2, shape3, arrow_tail, arrow, arrow_tip, shape4, shape5]
-    draw_shapes(shapes, win)
-
-    fade_in(display_msg, win, 1)
-
-    time.sleep(1.0)  # pause for 1s before arrow comes onscreen
-
-    move_arrow(arrow, arrow_tip, arrow_tail)  # moves arrow
-
-    fade_in(close_msg, win, 3)
-    win.getMouse()
+    text_list.append(display_msg)
+    text_list.append(close_msg)
 
 
 def draw_shapes(shape_list, window):
     for i in range(len(shape_list)):
         shape_list[i].draw(window)
+
 
 def fade_in(text, window, speed):
     time.sleep(0.25 / speed)
