@@ -1,6 +1,5 @@
 """
 Name: Joanna Godawa
-Partner: <your partner's name goes here – first and last>
 lab7.py
 """
 
