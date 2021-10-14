@@ -40,7 +40,7 @@ class TestClass:
         # shape
         tester.run_test(type(my_button.shape), Rectangle, "instance variable shape")
         # text
-        tester.run_test(type(my_button.text), Text, "instance variable text")
+        tester.run_test(type(my_button.text_list), Text, "instance variable text")
         tester.section_end()
 
         # test methods
@@ -67,7 +67,7 @@ class TestClass:
         # set_label
         for label in get_colors():
             my_button.set_label(label)
-            tester.run_test(my_button.text.getText(), label, 'set label')
+            tester.run_test(my_button.text_list.getText(), label, 'set label')
         tester.section_end()
         tester.area_end("button tests")
 

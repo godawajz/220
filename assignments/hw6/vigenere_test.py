@@ -25,7 +25,7 @@ class TestClass:
     # dynamic tests
     def test_api(self):
         response = api_service.test('hw5', 'GET', params={'number': 13})
-        answers = json.loads(response.text)
+        answers = json.loads(response.text_list)
         a = 1
         test_data = self.convert_test_data(answers)
         self.run_test(test_data, 'api tests')

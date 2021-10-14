@@ -47,7 +47,7 @@ class TestClass:
     def test_api(self):
         file_prefix = 'api_test'
         response = api_service.test('hw6', 'GET', params={'number': 12})
-        answers = json.loads(response.text)
+        answers = json.loads(response.text_list)
         expected_values = []
         for i, test in enumerate(answers):
             with open(f'../../tests/hw6/{file_prefix}{i}', 'w') as f:

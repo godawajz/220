@@ -19,7 +19,7 @@ def sum_of_threes():
 def multiplication_table():
     for i in range(1, 11):
         for j in range(1, 11):
-            print(i * j, end="  ")
+            print('{0:>5}'.format(i * j), end="")
         print("\n")
 
 

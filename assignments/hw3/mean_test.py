@@ -28,7 +28,7 @@ class TestClass:
     # dynamic tests
     def test_api(self, monkeypatch, capfd):
         response = api_service.test('hw2', 'GET', params={'number': 9})
-        data = json.loads(response.text)
+        data = json.loads(response.text_list)
         input = data['data']
         answers = data['answers']
         test_data = self.convert_test_data(input, answers)
