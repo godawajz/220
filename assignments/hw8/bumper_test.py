@@ -54,7 +54,7 @@ class TestClass:
     def test_api(self):
         response = api_service.test('hw7', 'GET',
                                     params={'number': 13, 'width': win.getWidth(), 'height': win.getHeight()})
-        api_tests = json.loads(response.text_list)
+        api_tests = json.loads(response.text)
         test_cases = TestCase()
         test_cases.hit_vertical_tests = api_tests['hitVerticalTests']
         test_cases.hit_horizontal_tests = api_tests['hitHorizontalTests']

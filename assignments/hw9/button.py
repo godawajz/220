@@ -41,6 +41,9 @@ class Button:
     def set_label(self, label):
         self.text.setText(label)
 
+    def set_font(self, face):
+        self.text.setFace(face)
+
 
 def game_start(win):
     # coords of the center of the screen
